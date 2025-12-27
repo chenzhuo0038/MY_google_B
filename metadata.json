@@ -1,0 +1,7 @@
+{
+  "name": "生成分镜图像提示词",
+  "description": "A comprehensive tool for visual prompt generation, storyboard planning with timeline logic, and AI-driven storyboard image generation with text overlays.",
+  "requestFramePermissions": [
+    "camera"
+  ]
+}

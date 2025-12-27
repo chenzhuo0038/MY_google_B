@@ -1,0 +1,137 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Visual & Storyboard AI Suite</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap');
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #020617;
+            color: #f8fafc;
+            overflow-x: hidden;
+        }
+        .custom-scrollbar::-webkit-scrollbar {
+            width: 10px;
+        }
+        .custom-scrollbar::-webkit-scrollbar-track {
+            background: #020617;
+        }
+        .custom-scrollbar::-webkit-scrollbar-thumb {
+            background: #1e293b;
+            border-radius: 10px;
+            border: 2px solid #020617;
+        }
+        .custom-scrollbar::-webkit-scrollbar-thumb:hover {
+            background: #334155;
+        }
+        .grid-25 {
+            display: grid;
+            grid-template-columns: repeat(5, 1fr);
+            grid-template-rows: repeat(5, 1fr);
+            gap: 6px;
+        }
+        .cell-transform {
+            transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+        .cell-transform:active {
+            transform: scale(0.8);
+        }
+        .glass-panel {
+            background: rgba(15, 23, 42, 0.4);
+            backdrop-filter: blur(16px);
+            border: 1px solid rgba(51, 65, 85, 0.3);
+            transition: all 0.3s ease;
+        }
+        .glass-panel:hover {
+            border-color: rgba(99, 102, 241, 0.4);
+        }
+        .image-card {
+            transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+            position: relative;
+            overflow: hidden;
+            border-radius: 1.5rem;
+        }
+        .image-card:hover {
+            transform: scale(1.02);
+            z-index: 10;
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.7);
+        }
+        .image-zoom-overlay {
+            background: linear-gradient(to top, rgba(0,0,0,0.9) 0%, transparent 100%);
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+        .image-card:hover .image-zoom-overlay {
+            opacity: 1;
+        }
+        .lightbox-overlay {
+            background: rgba(0, 0, 0, 0.98);
+            backdrop-filter: blur(10px);
+        }
+        
+        /* Layout Grids */
+        .preview-grid {
+            display: grid;
+            width: 100%;
+            gap: 2rem;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .layout-single { grid-template-columns: minmax(300px, 800px); }
+        .layout-2x2 { grid-template-columns: repeat(2, 1fr); }
+        .layout-3x3 { grid-template-columns: repeat(3, 1fr); }
+        
+        .layout-1-2 {
+            display: grid;
+            grid-template-columns: 2fr 1fr;
+            grid-template-rows: repeat(2, 1fr);
+            gap: 2rem;
+        }
+        .layout-1-2 > :first-child {
+            grid-row: span 2;
+        }
+        
+        .layout-strip {
+            display: flex;
+            flex-direction: column;
+            gap: 0;
+        }
+        .layout-strip .image-card {
+            border-radius: 0;
+            border-bottom: 2px solid #000;
+        }
+        .layout-strip .image-card:first-child { border-radius: 2rem 2rem 0 0; }
+        .layout-strip .image-card:last-child { border-radius: 0 0 2rem 2rem; border-bottom: none; }
+        
+        .layout-h-story {
+            display: flex;
+            overflow-x: auto;
+            gap: 1rem;
+            padding-bottom: 2rem;
+        }
+        .layout-h-story .image-card {
+            flex: 0 0 400px;
+        }
+    </style>
+<script type="importmap">
+{
+  "imports": {
+    "lucide-react": "https://esm.sh/lucide-react@^0.562.0",
+    "react/": "https://esm.sh/react@^19.2.3/",
+    "react": "https://esm.sh/react@^19.2.3",
+    "@google/genai": "https://esm.sh/@google/genai@^1.34.0",
+    "react-dom/": "https://esm.sh/react-dom@^19.2.3/"
+  }
+}
+</script>
+</head>
+<body class="custom-scrollbar">
+    <div id="root"></div>
+</body>
+</html>
